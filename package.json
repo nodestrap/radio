@@ -1,0 +1,43 @@
+{
+  "name": "@nodestrap/radio",
+  "version": "4.0.0",
+  "description": "A UI for the user to select single option.",
+  "type": "module",
+  "main": "dist/Radio.jsx",
+  "types": "dist/Radio.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodestrap/radio.git"
+  },
+  "keywords": [
+    "radio",
+    "select",
+    "control",
+    "controllable",
+    "component",
+    "element",
+    "react",
+    "nodestrap",
+    "styled"
+  ],
+  "author": "heymarco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nodestrap/radio/issues"
+  },
+  "homepage": "https://github.com/nodestrap/radio#readme",
+  "dependencies": {
+    "@cssfn/css-config": "^1.0.1",
+    "@cssfn/cssfn": "^1.0.3",
+    "@cssfn/react-cssfn": "^1.0.3",
+    "@nodestrap/basic": "^4.0.2",
+    "@nodestrap/check": "^4.0.1",
+    "@nodestrap/indicator": "^4.0.2",
+    "@nodestrap/utilities": "^4.0.0",
+    "@types/react": "^17.0.36",
+    "react": "^17.0.2"
+  }
+}
