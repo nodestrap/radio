@@ -146,30 +146,30 @@ export function Radio(props) {
     const isButton = !!props.checkStyle && ['btn', 'togglerBtn'].includes(props.checkStyle);
     const semanticRole = props.semanticRole ?? (isButton ? 'button' : 'radio');
     // jsx:
-    return (<Check 
+    return (React.createElement(Check
     // other props:
-    {...restProps} 
-    // semantics:
-    semanticRole={semanticRole} 
-    // essentials:
-    elmRef={(elm) => {
+    , { ...restProps, 
+        // semantics:
+        semanticRole: semanticRole, 
+        // essentials:
+        elmRef: (elm) => {
             setRef(elmRef, elm);
             setRef(inputRef, elm);
-        }} 
-    // accessibilities:
-    active={isActive} 
-    // classes:
-    mainClass={props.mainClass ?? sheet.main} 
-    // formats:
-    type={props.type ?? 'radio'} 
-    // events:
-    onClick={(e) => {
+        }, 
+        // accessibilities:
+        active: isActive, 
+        // classes:
+        mainClass: props.mainClass ?? sheet.main, 
+        // formats:
+        type: props.type ?? 'radio', 
+        // events:
+        onClick: (e) => {
             props.onClick?.(e);
             if (!e.defaultPrevented) {
                 handleCheck();
                 e.preventDefault();
             } // if
-        }} onKeyUp={(e) => {
+        }, onKeyUp: (e) => {
             props.onKeyUp?.(e);
             if (!e.defaultPrevented) {
                 if ((e.key === ' ') || (e.code === 'Space')) {
@@ -177,7 +177,7 @@ export function Radio(props) {
                     e.preventDefault();
                 } // if
             } // if
-        }} onChange={(e) => {
+        }, onChange: (e) => {
             props.onChange?.(e);
             if (!props.name)
                 return; // the radio must have a name
@@ -204,6 +204,6 @@ export function Radio(props) {
                     radio.dispatchEvent(new Event('clear', { bubbles: false }));
                 } // for
             } // if
-        }}/>);
+        } }));
 }
 export { Radio as default };
