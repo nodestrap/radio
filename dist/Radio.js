@@ -98,7 +98,7 @@ export const useRadioSheet = createUseSheet(() => [
             usesRadioStates(),
         ]),
     ]),
-]);
+], /*sheetId :*/ 'f4fvh7cm5b'); // an unique salt for SSR support, ensures the server-side & client-side have the same generated class names
 // configs:
 export const [cssProps, cssDecls, cssVals, cssConfig] = createCssConfig(() => {
     return {
