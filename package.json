@@ -1,6 +1,6 @@
 {
   "name": "@nodestrap/radio",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "description": "A UI for the user to select single option.",
   "type": "module",
   "main": "dist/Radio.js",
@@ -30,14 +30,14 @@
   },
   "homepage": "https://github.com/nodestrap/radio#readme",
   "dependencies": {
-    "@cssfn/css-config": "^1.0.1",
-    "@cssfn/cssfn": "^1.0.6",
-    "@cssfn/react-cssfn": "^1.0.9",
-    "@nodestrap/basic": "^4.0.4",
-    "@nodestrap/check": "^4.0.3",
-    "@nodestrap/indicator": "^4.0.4",
-    "@nodestrap/utilities": "^4.0.1",
-    "@types/react": "^17.0.37",
+    "@cssfn/css-config": "^1.0.4",
+    "@cssfn/cssfn": "^1.0.11",
+    "@cssfn/react-cssfn": "^1.0.11",
+    "@nodestrap/basic": "^4.0.7",
+    "@nodestrap/check": "^4.0.4",
+    "@nodestrap/indicator": "^4.0.7",
+    "@nodestrap/utilities": "^4.0.3",
+    "@types/react": "^17.0.38",
     "react": "^17.0.2"
   }
 }

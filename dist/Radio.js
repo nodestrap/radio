@@ -3,9 +3,11 @@ import { default as React, useRef, useEffect, } from 'react'; // base technology
 // cssfn:
 import { 
 // compositions:
-composition, mainComposition, imports, 
-// layouts:
-layout, vars, children, 
+mainComposition, 
+// styles:
+style, vars, imports, 
+//combinators:
+children, 
 // utilities:
 escapeSvg, } from '@cssfn/cssfn'; // cssfn core
 import { 
@@ -35,69 +37,63 @@ export const usesRadioLayout = () => {
     // dependencies:
     // borders:
     const [, , borderRadiusDecls] = usesBorderRadius();
-    return composition([
-        imports([
+    return style({
+        ...imports([
             // layouts:
             usesCheckLayout(),
         ]),
-        layout({
+        ...style({
             // children:
-            ...children(inputElm, [
-                layout({
-                    // borders:
-                    // circle corners on top:
-                    [borderRadiusDecls.borderStartStartRadius]: '0.5em',
-                    [borderRadiusDecls.borderStartEndRadius]: '0.5em',
-                    // circle corners on bottom:
-                    [borderRadiusDecls.borderEndStartRadius]: '0.5em',
-                    [borderRadiusDecls.borderEndEndRadius]: '0.5em',
-                    // customize:
-                    ...usesGeneralProps(cssProps), // apply general cssProps
-                }),
-            ]),
+            ...children(inputElm, {
+                // borders:
+                // circle corners on top:
+                [borderRadiusDecls.borderStartStartRadius]: '0.5em',
+                [borderRadiusDecls.borderStartEndRadius]: '0.5em',
+                // circle corners on bottom:
+                [borderRadiusDecls.borderEndStartRadius]: '0.5em',
+                [borderRadiusDecls.borderEndEndRadius]: '0.5em',
+                // customize:
+                ...usesGeneralProps(cssProps), // apply general cssProps
+            }),
         }),
-        vars({
+        ...vars({
             [ccssDecls.img]: cssProps.img,
         }),
-    ]);
+    });
 };
 export const usesRadioVariants = () => {
     // dependencies:
     // layouts:
-    const [sizes] = usesSizeVariant((sizeName) => composition([
-        layout({
-            // overwrites propName = propName{SizeName}:
-            ...overwriteProps(cssDecls, usesSuffixedProps(cssProps, sizeName)),
-        }),
-    ]));
-    return composition([
-        imports([
+    const [sizes] = usesSizeVariant((sizeName) => style({
+        // overwrites propName = propName{SizeName}:
+        ...overwriteProps(cssDecls, usesSuffixedProps(cssProps, sizeName)),
+    }));
+    return style({
+        ...imports([
             // variants:
             usesCheckVariants(),
             // layouts:
             sizes(),
         ]),
-    ]);
+    });
 };
 export const usesRadioStates = () => {
-    return composition([
-        imports([
+    return style({
+        ...imports([
             // states:
             usesCheckStates(),
         ]),
-    ]);
+    });
 };
 export const useRadioSheet = createUseSheet(() => [
-    mainComposition([
-        imports([
-            // layouts:
-            usesRadioLayout(),
-            // variants:
-            usesRadioVariants(),
-            // states:
-            usesRadioStates(),
-        ]),
-    ]),
+    mainComposition(imports([
+        // layouts:
+        usesRadioLayout(),
+        // variants:
+        usesRadioVariants(),
+        // states:
+        usesRadioStates(),
+    ])),
 ], /*sheetId :*/ 'f4fvh7cm5b'); // an unique salt for SSR support, ensures the server-side & client-side have the same generated class names
 // configs:
 export const [cssProps, cssDecls, cssVals, cssConfig] = createCssConfig(() => {

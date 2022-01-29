@@ -8,15 +8,18 @@ import {
 // cssfn:
 import {
     // compositions:
-    composition,
     mainComposition,
+    
+    
+    
+    // styles:
+    style,
+    vars,
     imports,
     
     
     
-    // layouts:
-    layout,
-    vars,
+    //combinators:
     children,
     
     
@@ -91,69 +94,65 @@ export const usesRadioLayout = () => {
     
     
     
-    return composition([
-        imports([
+    return style({
+        ...imports([
             // layouts:
             usesCheckLayout(),
         ]),
-        layout({
+        ...style({
             // children:
-            ...children(inputElm, [
-                layout({
-                    // borders:
-                    // circle corners on top:
-                    [borderRadiusDecls.borderStartStartRadius] : '0.5em',
-                    [borderRadiusDecls.borderStartEndRadius  ] : '0.5em',
-                    // circle corners on bottom:
-                    [borderRadiusDecls.borderEndStartRadius  ] : '0.5em',
-                    [borderRadiusDecls.borderEndEndRadius    ] : '0.5em',
-                    
-                    
-                    
-                    // customize:
-                    ...usesGeneralProps(cssProps), // apply general cssProps
-                }),
-            ]),
+            ...children(inputElm, {
+                // borders:
+                // circle corners on top:
+                [borderRadiusDecls.borderStartStartRadius] : '0.5em',
+                [borderRadiusDecls.borderStartEndRadius  ] : '0.5em',
+                // circle corners on bottom:
+                [borderRadiusDecls.borderEndStartRadius  ] : '0.5em',
+                [borderRadiusDecls.borderEndEndRadius    ] : '0.5em',
+                
+                
+                
+                // customize:
+                ...usesGeneralProps(cssProps), // apply general cssProps
+            }),
         }),
-        vars({
+        ...vars({
             [ccssDecls.img] : cssProps.img,
         }),
-    ]);
+    });
 };
 export const usesRadioVariants = () => {
     // dependencies:
     
     // layouts:
-    const [sizes] = usesSizeVariant((sizeName) => composition([
-        layout({
-            // overwrites propName = propName{SizeName}:
-            ...overwriteProps(cssDecls, usesSuffixedProps(cssProps, sizeName)),
-        }),
-    ]));
+    const [sizes] = usesSizeVariant((sizeName) => style({
+        // overwrites propName = propName{SizeName}:
+        ...overwriteProps(cssDecls, usesSuffixedProps(cssProps, sizeName)),
+    }));
     
     
     
-    return composition([
-        imports([
+    return style({
+        ...imports([
             // variants:
             usesCheckVariants(),
             
             // layouts:
             sizes(),
         ]),
-    ]);
+    });
 };
 export const usesRadioStates = () => {
-    return composition([
-        imports([
+    return style({
+        ...imports([
             // states:
             usesCheckStates(),
         ]),
-    ]);
+    });
 };
 
 export const useRadioSheet = createUseSheet(() => [
-    mainComposition([
+    mainComposition(
         imports([
             // layouts:
             usesRadioLayout(),
@@ -164,7 +163,7 @@ export const useRadioSheet = createUseSheet(() => [
             // states:
             usesRadioStates(),
         ]),
-    ]),
+    ),
 ], /*sheetId :*/'f4fvh7cm5b'); // an unique salt for SSR support, ensures the server-side & client-side have the same generated class names
 
 
